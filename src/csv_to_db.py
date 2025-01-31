@@ -3,7 +3,13 @@ from tinydb import TinyDB, Query
 
 def read_csv(file_path):
     # Read and parse the CSV file
-    pass
+    data=[]
+    file=open(file_path,mode='r',newline='')
+    reader=csv.DictReader(file)
+    for i in reader:
+        data.append(i)
+    file.close()
+    return data
 
 def insert_into_db(data, db_path):
     # Insert data into TinyDB
