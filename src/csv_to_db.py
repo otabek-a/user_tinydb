@@ -1,6 +1,5 @@
 import csv
 from tinydb import TinyDB, Query
-
 import csv
 
 def read_csv(file_path):
@@ -16,7 +15,9 @@ def read_csv(file_path):
     return data
 
 
-def insert_into_db(data, db_path):
+def insert_into_db(data, db_path=None):
+    if db_path is None:
+        raise ValueError('it not be empty')
     if not data:
         raise ValueError('Data must not be empty')
     db = TinyDB(db_path)
@@ -49,7 +50,6 @@ def query_db(db_path, query_field=None, query_value=None):
         result = db.all()
     
     return result
-
 
 
 if __name__ == "__main__":
